@@ -1,12 +1,10 @@
-FROM golang:1.24.1-bullseye as builder
-
-RUN go install go.opentelemetry.io/collector/cmd/builder@v0.124.0
+FROM otel/opentelemetry-collector-builder:0.123.0 as builder
 
 WORKDIR /app
 
 COPY . .
 
-RUN CGO_ENABLED=0 builder --config=./manifest.yaml
+RUN CGO_ENABLED=0 ocb --config=./manifest.yaml
 
 FROM gcr.io/distroless/static-debian12
 
