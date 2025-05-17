@@ -5,28 +5,23 @@
     "dependencies"
   ],
   "enabledManagers": [
-    "dockerfile",
-    "regex",
-    "custom"
+    "regex"
   ],
   "extends": [
     "config:recommended",
     "schedule:daily"
   ],
-  "customManagers": [
+  "regexManagers": [
     {
-      "description": "Parse Go modules in manifest.yaml",
       "fileMatch": [
         "^manifest\\.yaml$"
       ],
       "matchStrings": [
-        "gomod:\\s*(?<depName>[^\\s]+)\\s*(?<currentValue>v?[0-9\\.]+)"
+        "gomod:\\s*(?<depName>[^\\s]+)\\s+(?<currentValue>v?[0-9\\.]+)"
       ],
       "datasourceTemplate": "go",
       "depNameTemplate": "{{depName}}"
-    }
-  ],
-  "regexManagers": [
+    },
     {
       "fileMatch": [
         "^Dockerfile$"
@@ -35,17 +30,17 @@
         "git clone --depth=1 --branch (?<currentValue>v?[0-9.]+) https://github\\.com/k4ji/tracesimulationreceiver\\.git"
       ],
       "datasourceTemplate": "github-tags",
-      "depNameTemplate": "k4ji/tracesimulationreceiver",
+      "depNameTemplate": "github.com/k4ji/tracesimulationreceiver",
       "versioningTemplate": "semver"
     }
   ],
   "packageRules": [
     {
       "managers": [
-        "custom"
+        "regex"
       ],
-      "matchPackagePatterns": [
-        "^github\\.com/k4ji/tracesimulationreceiver$"
+      "matchPackageNames": [
+        "github.com/k4ji/tracesimulationreceiver"
       ],
       "groupName": "TraceSimulationReceiver updates"
     },
@@ -53,17 +48,9 @@
       "managers": [
         "regex"
       ],
-      "matchPackageNames": [
-        "k4ji/tracesimulationreceiver"
-      ],
-      "groupName": "TraceSimulationReceiver updates"
-    },
-    {
-      "managers": [
-        "custom"
-      ],
-      "excludePackagePatterns": [
-        "^github\\.com/k4ji/tracesimulationreceiver$"
+      "excludePackageNames": [
+        "k4ji/tracesimulationreceiver",
+        "github.com/k4ji/tracesimulationreceiver"
       ],
       "groupName": "OpenTelemetry Collector module updates"
     },
