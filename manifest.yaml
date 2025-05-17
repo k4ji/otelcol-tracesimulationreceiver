@@ -15,7 +15,7 @@ processors:
 
 receivers:
   - gomod: go.opentelemetry.io/collector/receiver/otlpreceiver v0.126.0
-  - gomod: github.com/k4ji/tracesimulationreceiver v0.3.0
+  - gomod: github.com/k4ji/tracesimulationreceiver v0.3.1
 
 connectors:
   - gomod: github.com/open-telemetry/opentelemetry-collector-contrib/connector/datadogconnector v0.126.0
