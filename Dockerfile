@@ -1,4 +1,4 @@
-FROM otel/opentelemetry-collector-builder:0.123.0 as builder
+FROM otel/opentelemetry-collector-builder:0.126.0 as builder
 WORKDIR /app
 COPY . .
 RUN CGO_ENABLED=0 ocb --config=./manifest.yaml
