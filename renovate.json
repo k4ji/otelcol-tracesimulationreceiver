@@ -30,7 +30,7 @@
         "git clone --depth=1 --branch (?<currentValue>v?[0-9.]+) https://github\\.com/k4ji/tracesimulationreceiver\\.git"
       ],
       "datasourceTemplate": "github-tags",
-      "depNameTemplate": "github.com/k4ji/tracesimulationreceiver",
+      "depNameTemplate": "k4ji/tracesimulationreceiver",
       "versioningTemplate": "semver"
     }
   ],
@@ -40,6 +40,7 @@
         "regex"
       ],
       "matchPackageNames": [
+        "k4ji/tracesimulationreceiver",
         "github.com/k4ji/tracesimulationreceiver"
       ],
       "groupName": "TraceSimulationReceiver updates"
