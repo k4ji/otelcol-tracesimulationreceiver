@@ -4,7 +4,7 @@ COPY . .
 RUN CGO_ENABLED=0 ocb --config=./manifest.yaml
 
 FROM alpine/git:2.47.2 AS fetcher
-RUN git clone --depth=1 --branch v0.5.0 https://github.com/k4ji/tracesimulationreceiver.git /tmp/tracesim
+RUN git clone --depth=1 --branch v0.5.1 https://github.com/k4ji/tracesimulationreceiver.git /tmp/tracesim
 
 FROM gcr.io/distroless/static-debian12
 COPY --from=builder /app/otelcol /otelcol
